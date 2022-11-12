@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Seeker - Post</title>
+</head>
+<body>
+
+<label>Description:</label>
+<br>
+
+<textarea id="descriptionInput" name="description" rows="6" cols="100">
+Describe what you are seeking for!
+</textarea>
+<br>
+    
+<label for="w3review">Tags:</label>
+<br>
+
+<input id="tagInput" name="tag" value="Enter a tag here!"><br>
+    
+<div id="tags"></div>
+    
+<button id="postButton" type="button" onClick="p()">Post</button>
+    
+
+
+<!-- initialize values -->
+<script type="module" src="posting.js"></script>    
+
+<!-- add tag -->
+<script>
+    var tags = [];
+    // Get the input field
+    var input = document.getElementById("tagInput");
+
+    // Execute a function when the user presses a key on the keyboard
+    input.addEventListener("keypress", function(event) {
+      // If the user presses the "Enter" key on the keyboard
+      if (event.key === "Enter") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+          
+        var val = document.getElementById('tagInput').value
+          
+        // add the tag to the array
+        tags.push(val);
+        
+        // log the array
+        console.log(tags);
+          
+        // render the new tag to the screen
+        temp = document.createElement('div');
+        temp.className = 'tags';
+        temp.innerHTML = val;
+        document.getElementById('tags').appendChild(temp);
+        
+        // clear the value from input
+        document.getElementById('tagInput').value = '';
+      }
+    });
+    
+</script>
+    
+<!-- add the post to database -->
+<script>
+    function p(){
+        var description = document.getElementById("descriptionInput").value;
+        post(description, tags);
+    }
+</script>
+
+
+
+</body>
+</html>
