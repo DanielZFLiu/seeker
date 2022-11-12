@@ -1,3 +1,10 @@
+body{
+    background-image: url('https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Utoronto_coa.svg/1200px-Utoronto_coa.svg.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 40%;
+}
+
 .search-wrapper{
     display: flex;
     flex-direction: column;
