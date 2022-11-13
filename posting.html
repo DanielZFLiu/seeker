@@ -9,14 +9,14 @@
 <br>
 
 <textarea id="descriptionInput" name="description" rows="6" cols="100">
-Describe what you are seeking for!
+Do you perhaps seek something?
 </textarea>
 <br>
     
 <label>Tags:</label>
 <br>
 
-<input id="tagInput" name="tag" value="Enter a tag here!"><br>
+<input id="tagInput" name="tag" value="Help other seekers find you."><br>
     
 <div id="tags"></div>
     
@@ -36,7 +36,7 @@ Describe what you are seeking for!
     // Execute a function when the user presses a key on the keyboard
     input.addEventListener("keypress", function(event) {
       // If the user presses the "Enter" key on the keyboard
-      if (event.key === "Enter") {
+      if (event.key === "Enter" && tags.length != 3) {
         // Cancel the default action, if needed
         event.preventDefault();
           
@@ -45,9 +45,6 @@ Describe what you are seeking for!
         // add the tag to the array
         tags.push(val);
         
-        // log the array
-        console.log(tags);
-          
         // render the new tag to the screen
         temp = document.createElement('div');
         temp.className = 'tags';
@@ -65,6 +62,8 @@ Describe what you are seeking for!
 <script>
     function p(){
         var description = document.getElementById("descriptionInput").value;
+        var description = description.substring(0, 301);
+
         post(description, tags);
     }
 </script>
