@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-  import { getFirestore, collection, addDoc} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+  import { getFirestore, collection, addDoc, doc, getDocs} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
   // TODO: Add SDKs for Firebase products that you want to use
 
   // Your web app's Firebase configuration
@@ -19,11 +19,25 @@
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
+  // add post
   async function post(description, tags){
     await addDoc(collection(db, "posts"), {
-      Description: description,
-      Tags: tags,
+      description: description,
+      tags: tags,
     });
   }
 
   window.post = post;
+
+  // load all documents into array
+  async function load(arr){
+    const querySnapshot = await getDocs(collection(db, "posts"));
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+      arr.push(doc.data());
+    });
+  }
+
+  window.load = load;
+
