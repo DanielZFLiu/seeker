@@ -9,12 +9,18 @@ body{
     display: grid;
     grid-template-columns: auto auto;
 }
+
+
+.grid_item1{
+    margin-left: 100px;
+}
+
 .grid_item1 > h2{
-    margin-top: 10%;
+    margin-top: 150px;
     text-align: center;
 }
 .grid_item2 >h2{
-    margin-top: 10%;
+    margin-top: 150px;
     text-align: center;
 }
 .grid_item1 > p{
@@ -25,12 +31,12 @@ body{
 }
 .grid_item1 > form{
     margin: auto;
-    margin-top: 5%; /*22.5*/
+    margin-top: 5%;
     text-align: center;
 }
 .grid_item2 > form{
     margin: auto;
-    margin-top: 5%; /*24.7*/
+    margin-top: 5%;
     text-align: center;
 }
 .item > button{
