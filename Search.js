@@ -39,12 +39,13 @@ load(posts).then(() => {
 
     //turn array into html list
     searchResult = posts.map(postData => {
-      // console.log(postTemplate)
       const post = postTemplate.content.cloneNode(true).children[0];
       const description = post.querySelector("[data-description]");
       const tags = post.querySelector("[data-tags]");
-      description.textContent = postData.description;
-      tags.textContent = 'tags:\t '+ postData.tags;
+
+      description.textContent = postData.description.substring(0,300);
+      tags.textContent = 'tags:\t '+ postData.tags.slice(0,3);
+  
       postContainer.append(post)
       return{description: postData.description, tags: postData.tags, element: post}
     })
